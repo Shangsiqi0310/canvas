@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.addEventListener('load', function() {
+                var arr = [{
+                    value: 1,
+                    title: '哈哈',
+                    color: '#ff0000'
+                }, {
+                    value: 2,
+                    title: '哈哈',
+                    color: "#00ff00"
+                }, {
+                    value: 3,
+                    title: '哈哈',
+                    color: '#0000ff'
+                }, {
+                    value: 4,
+                    title: '哈哈',
+                    color: '#E06485'
+                }]
+                var draw = document.querySelector('.drawing')
+                draw.width = 600
+                draw.height = 600
+                var context = draw.getContext('2d')
+                context.translate(300, 300)
+                var sumAngle = 0
+                var startAngle = 0
+                var endAngle = 0
+                arr.forEach(item => {
+                    context.beginPath()
+                    context.moveTo(0, 0)
+                    context.fillStyle = item.color
+                    angle = (item.value / 5) * Math.PI
+                    startAngle = (1 / 2) * Math.PI - sumAngle
+                    endAngle = startAngle - angle
+                    context.arc(0, 0, 100, startAngle, endAngle, true)
+                    context.fill()
+                    sumAngle += angle
+
+                })
+
+
+            })
+            //坑坑坑,现在(1/2)*pi是y轴负方向
+            //根据以上数据绘制饼状图,每个区域的角度为(value/10)*2*pi,从-90度开始画
+            //数组中的每个数据都有自己的百分比,根据百分比的占比确定每块的弧度
+            //将弧度累加与初始值相加,就是每次的startAngle,每个startAngle加上angle就是它的endAngle
+    </script>
+</head>
+
+<body>
+    <canvas class="drawing"></canvas>
+</body>
+
+</html>

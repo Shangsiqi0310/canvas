@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.addEventListener('load', function() {
+            var drawing = document.querySelector('.drawing')
+            if (drawing.getContext) {
+                var context = drawing.getContext('2d')
+                context.strokeStyle = "#ff0000"
+                context.strokeRect(10, 10, 80, 30)
+                var fontSize = 100
+
+                context.font = fontSize + "px"
+                while (context.measureText("hahahahahah").width > 80) {
+                    fontSize--;
+                    context.font = fontSize + "px Arial"
+                        //每次重新设置context.font,因为判断width时是通过context.font设置的值来判断的
+                }
+                context.textBaseline = "top"
+                context.fillText("hahahahahah", 10, 10)
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <canvas class="drawing" width="100" height="100"></canvas>
+</body>
+
+</html>

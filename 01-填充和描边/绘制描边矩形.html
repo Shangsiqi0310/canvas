@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+    <script>
+        window.addEventListener('load', function() {
+            var drawing = document.querySelector('.drawing')
+            if (drawing.getContext) {
+                var context = drawing.getContext('2d')
+                context.strokeStyle = "#00ff00";
+                context.lineWidth = "2"
+                context.strokeRect(10, 10, 50, 50)
+                context.strokeStyle = "rgba(0,0,255,.4)";
+                context.lineCap = "round"
+                context.strokeRect(20, 20, 50, 50)
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <canvas class="drawing" width="100" height="100">我是canavs</canvas>
+
+</body>
+
+</html>

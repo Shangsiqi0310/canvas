@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.addEventListener('load', function() {
+            var drawing = document.querySelector('.drawing')
+            drawing.height = 500
+            drawing.width = 800
+            var context = drawing.getContext('2d')
+            var block = 10
+            context.strokeStyle = "#aaaaaa"
+            context.lineWidth = 0.5
+            for (let i = 0; i <= drawing.width / block; i++) {
+                context.moveTo(i * block, 0)
+                context.lineTo(i * block, drawing.height)
+                context.stroke()
+            }
+            for (let i = 0; i <= drawing.height / block; i++) {
+                context.moveTo(0, i * block)
+                context.lineTo(drawing.width, i * block)
+                context.stroke()
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <canvas class="drawing">浏览器不支持canvas</canvas>
+</body>
+
+</html>

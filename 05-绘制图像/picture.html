@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            width: 100px
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function() {
+            var drawing = document.querySelector('.drawing')
+            var img = document.images[0]
+            if (drawing.getContext) {
+                var context = drawing.getContext('2d')
+
+                //不仅可以传入图片元素,还可以传入canvas元素的dom
+                context.drawImage(img, 10, 10) //在画布上画图片,获取dom元素,第一个参数dom元素,在画布上x,y处以原图大小展示
+                context.drawImage(img, 20, 20, 100, 100) //后两个参数,原图展示出来的宽高(整个原图)
+                context.drawImage(img, 40, 40, 1000, 1000, 120, 10, 100, 100) //原图上的位置和宽高获取局部图片,在布上的位置和宽高
+
+                var imgURL = drawing.toDataURL('image/jpeg')
+
+                var image = document.createElement('img')
+                image.src = imgURL
+                document.body.appendChild(image)
+
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <canvas class='drawing' width="400" height="400">canvas</canvas>
+    <img src="../img//QQ图片20190924102313.jpg">
+    <div>11</div>
+</body>
+
+</html>

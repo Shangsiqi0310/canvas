@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.addEventListener('load', function() {
+                var drawing = document.querySelector('.drawing')
+                if (drawing.getContext) {
+                    var context = drawing.getContext('2d')
+                    context.fillStyle = "#ff0000"
+                    context.fillRect(10, 10, 50, 50)
+                    context.save()
+                    context.fillStyle = "rgba(0,255,0,.4)"
+                    context.fillRect(20, 20, 50, 50)
+                    context.save()
+                    context.strokeStyle = "rgba(0,0,255,.4)"
+                    context.strokeRect(30, 30, 50, 50)
+                    context.restore()
+                    context.fillRect(40, 40, 50, 50)
+                }
+            })
+            //调用save()方法后当前的设置会进入一个栈结构,当想再使用这个设置时,restore()即可返回上一次保存的设置
+    </script>
+</head>
+
+<body>
+    <canvas class='drawing' width="100" height="100">canvas</canvas>
+</body>
+
+</html>
